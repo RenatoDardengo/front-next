@@ -6,11 +6,13 @@ import axios, { AxiosError } from "axios";
 import { useState } from 'react';
 import Cookie from 'js-cookie';
 import { ErrorResponse } from "@/types";
+import { useRouter } from "next/navigation";
 
 
 export default function Login() {
     const [name, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { push } = useRouter();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   
@@ -31,6 +33,8 @@ export default function Login() {
                 const tokenFromAPI = response.data.token;
                 Cookie.set('auth_token', tokenFromAPI);
                 alert (`Usuário ${name} atenticado com sucesso!`)
+                push("/admin/home")
+
                 
             }
             if (response.status === 401){

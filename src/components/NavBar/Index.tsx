@@ -1,25 +1,39 @@
+'use client'
 import style from "./style.module.css"
-type NavbarProps = {
-    onCollapse: () => void;
-};
-const NavBar = ({ onCollapse }: NavbarProps) => {
-    
-    const handleCollapse = () => {
-        onCollapse();
+import { useRouter } from "next/navigation";
+import Cookie from 'js-cookie';
+import { ExitButtonProps } from "@/types";
+import { NavbarProps } from "@/types";
+
+
+const ExitButton = ({ onExit }: ExitButtonProps) => {
+    const router = useRouter();
+
+    const handleExit = () => {
+        router.push("/admin");
+        Cookie.remove('auth_token');
+        onExit();
     };
+
+    return (
+        <span onClick={handleExit}>
+            Sair
+        </span>
+    );
+};
+
+
+
+const NavBar = ({ onCollapse, username }: NavbarProps) => {
     return (
         <div className={style.navbar}>
             <div>
-                <img src="/img/menu.png" alt="menu" onClick={handleCollapse} />
+                <img src="/img/menu.png" alt="menu" onClick={onCollapse} />
             </div>
-            <div>Olá, "usuário logado"</div>
-            <span>
-                Sair
-            </span>
-           
+            <div>Olá, {username}</div>
+            <ExitButton onExit={onCollapse} />
         </div>
-    )
-
-}
+    );
+};
 
 export default NavBar;

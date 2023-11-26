@@ -23,3 +23,12 @@ export interface IAuthProvider {
 export interface ErrorResponse {
     msg: string; 
 }
+
+export type ExitButtonProps = {
+    onExit: () => void;
+};
+
+export type NavbarProps = {
+    onCollapse: () => void;
+    username: string;
+};
