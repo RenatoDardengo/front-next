@@ -1,5 +1,5 @@
-"use client"
-import React, { Children, useState } from 'react';
+'use client'
+import React, {useState } from 'react';
 import NavBar from '@/components/NavBar/Index';
 import SideBar from '@/components/SideBar/Index';
 import style from "./page.module.css";
@@ -16,12 +16,14 @@ import EditPublication from '@/components/Publications/Edit';
 
 
 
+
 export default function Home() {
     const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
     const [modalTitle, setModalTitle] = useState<string>("");
     const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
     const [collapse, setCollapse] = useState(true);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
     function handleOpenModal(modalChildren: string, data?: any, title?: string) {
         if (modalIsOpen) {
@@ -79,7 +81,7 @@ export default function Home() {
     return (
         <div className={style.container}>
 
-            <NavBar onCollapse={handleCollapse} />
+            <NavBar onCollapse={handleCollapse}  />
             <SideBar collapsed={collapse} onItemClick={handleMenuItemClick} />
             <Content>
                 {selectedComponent}

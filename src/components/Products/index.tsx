@@ -2,7 +2,7 @@ import { Children, useState } from "react";
 import style from "./style.module.css"
 import { InputText } from "../Custom/InputText";
 import { Button } from "../Custom/Button";
-import { ProductData } from "@/src/types";
+import { ProductData } from "@/types";
 
 interface ProductProps {
     openModal: (param: string, data?: ProductData, title?: string) => void;

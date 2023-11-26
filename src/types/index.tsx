@@ -30,5 +30,6 @@ export type ExitButtonProps = {
 
 export type NavbarProps = {
     onCollapse: () => void;
-    username: string;
+    userName?:string;
+    
 };

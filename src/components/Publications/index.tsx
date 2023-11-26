@@ -1,7 +1,7 @@
 import { Children, useState } from "react";
 import style from "./style.module.css";
-import { ProductData } from "@/src/types";
-import { InputText } from "../Custom/InputText";
+import { ProductData } from "@/types";
+import { InputText } from "@/components/Custom/InputText";
 import { Button } from "../Custom/Button";
 
 interface PublicationsProps{

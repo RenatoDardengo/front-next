@@ -2,7 +2,7 @@ import { InputText } from "../Custom/InputText";
 import TextArea from "../Custom/TextArea";
 import style from "./style.module.css"
 import { Button } from "../Custom/Button";
-import { ProductData } from "@/src/types";
+import { ProductData } from "@/types";
 interface EditPros {
     productData: ProductData;
 }
