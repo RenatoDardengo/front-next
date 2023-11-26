@@ -1,0 +1,54 @@
+.sidebar {
+    grid-area: sidebar;
+    background-color: rgb(1, 102, 113);
+    /*background-color: rgb(46, 60, 84);
+    /*background-color: rgb(104,128,129) ;*/
+    color: aliceblue;
+    width: 170px;
+    transition: width 0.4s ease;
+    height: 100vh;
+}
+.sidebar_collapsed{
+    grid-area: sidebar;
+    background-color: rgb(1, 102, 113);
+    color: aliceblue;
+    width: 60px;
+    transition: width 0.4s ease;
+    height: 100vh;
+}
+.menu {
+    padding-top: 100px;
+    
+}
+.menu_item_text_none{
+    display: none;
+}
+.menu_item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    height: 20px;
+    padding-left: 15px;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.menu_item_text{
+    padding-left: 10px;
+}
+.menu_item:hover {
+    background-color: rgb(61, 157, 179);
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .menu_item_text{
+        display: none;
+    }
+
+
+}

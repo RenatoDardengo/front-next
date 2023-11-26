@@ -1,0 +1,9 @@
+.content {
+    grid-area: content;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+
+}

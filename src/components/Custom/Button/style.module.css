@@ -1,0 +1,103 @@
+/*.btn {
+    background-color: #2d3643;
+    text-decoration: none;
+    color: azure;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 22px;
+    margin-left: 5px;
+
+}*/
+
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn_default {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.btn_primary {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn_secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Estilo para botões de sucesso */
+.btn_success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Estilo para botões de perigo */
+.btn_danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Estilo para botões de aviso */
+.btn_warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* Estilo para botões informativos */
+.btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+/* Estilo para botões leves */
+.btn-light {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Estilo para botões escuros */
+.btn-dark {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Estilo para botões link */
+.btn-link {
+    background-color: transparent;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Efeito de hover para todos os botões */
+.btn:hover {
+    opacity: 0.9;
+}
+.flat {
+    color: rgb(32, 33, 35);
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    width: 100px;
+}
+
+.flat:hover {
+    cursor: pointer;
+    background-color: rgb(109, 143, 211) ;
+    border-radius: 5px;
+    width: 100px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.margin_top {
+    margin-top: 20px;
+}

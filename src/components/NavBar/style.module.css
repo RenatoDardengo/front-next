@@ -1,0 +1,25 @@
+.navbar {
+    grid-area: navbar;
+    background-color: rgb(240, 240, 240);
+    padding-top: 15px;
+    height: 45px;
+    padding-bottom: 5px;
+    color: rgb(73, 88, 112);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navbar img {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+    
+}
+
+.navbar span{
+    margin-right: 20px;
+    cursor: pointer;
+
+}
