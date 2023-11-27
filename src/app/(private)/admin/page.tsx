@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Cookie from 'js-cookie';
 import { ErrorResponse } from "@/types";
 import { useRouter } from "next/navigation";
+import UserService from "@/services/apis/userService";
 
 
 export default function Login() {
@@ -15,48 +16,40 @@ export default function Login() {
     const { push } = useRouter();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  
+
         event.preventDefault();
         const payload = {
             name,
             password
         };
-        const apiEndpoint = "http://localhost:3001/admin";
         try {
-            const response = await axios.post(apiEndpoint, {
-                name,
-                password,
-            });
-           
+
+            const response = await UserService.authentication({ userName: name, password: password })
 
             if (response.status === 200) {
                 const tokenFromAPI = response.data.token;
                 Cookie.set('auth_token', tokenFromAPI);
-                alert (`Usuário ${name} atenticado com sucesso!`)
+                alert(`Usuário ${name} atenticado com sucesso!`)
                 push("/admin/home");
 
+            }
 
-                
-            }
-            if (response.status === 401){
-                const msg = response.data.msg
-                alert (msg)
-            }
-        } catch (error:any) {
+        } catch (error: any) {
+
             if (axios.isAxiosError(error)) {
-                const axiosError = error as AxiosError<ErrorResponse>; 
+                const axiosError = error as AxiosError<ErrorResponse>;
                 if (axiosError.response?.status === 401) {
                     const msg = axiosError.response.data.msg;
                     alert(msg);
                 } else if (axiosError.response?.status === 400) {
                     const msg = axiosError.response.data.msg;
                     alert(msg);
-                } 
+                }
             } else {
-                
+
                 alert("Erro ao tentar fazer login.");
             }
-           
+
         }
     };
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +59,9 @@ export default function Login() {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
+    const handleGoToHome = () => {
+        push("/");
+    }
 
     return (
         <div className={style.appContainer}>
@@ -98,7 +94,7 @@ export default function Login() {
                     </div>
                     <div className={style.btn_frm}>
                         <Button label="Entrar" type="submit" className="btn_primary" />
-                        <Button label="Home" className="btn-warning" type="button" />
+                        <Button label="Home" className="btn-warning" type="button" onClick={handleGoToHome} />
                     </div>
                 </form>
             </div>

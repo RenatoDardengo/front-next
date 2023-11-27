@@ -64,7 +64,7 @@ export default function Home() {
                 setSelectedComponent(<HomeAdmin />);
                 break;
             case 'users':
-                setSelectedComponent(<Users />);
+                setSelectedComponent(<Users openModal={handleOpenModal} />);
                 break;
             case 'products':
                 setSelectedComponent(<Products openModal={handleOpenModal} />);

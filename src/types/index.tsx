@@ -7,8 +7,8 @@ export interface ProductData {
 }
 
 export interface IUser {
-    email?: string;
-    token?: string;
+    userName?: string;
+    password?: string;
 }
 
 export interface IContext extends IUser {
@@ -33,3 +33,17 @@ export type NavbarProps = {
     userName?:string;
     
 };
+export interface IUserData {
+    id?: number;
+    name?: string,
+    password?: string,
+    permission?: number;
+    createdDate?: Date;
+    updatedDate?: Date
+
+}
+export interface IUserProps {
+    openModal: (param: string, data?: ProductData, title?: string) => void;
+
+
+}
