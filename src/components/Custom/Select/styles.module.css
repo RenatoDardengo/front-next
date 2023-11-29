@@ -1,0 +1,16 @@
+/* Estilos para o select */
+select.input_select {
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(32, 33, 35);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Adicione outros estilos necessários */
+}
+
+select.input_select:focus {
+    border-color: rgb(0, 123, 255);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+
+}
+

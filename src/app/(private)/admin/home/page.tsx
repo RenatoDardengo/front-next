@@ -13,6 +13,8 @@ import CreateProduct from '@/components/Products/Create';
 import EditProduct from '@/components/Products/Edit';
 import CreatePubliocation from '@/components/Publications/Create';
 import EditPublication from '@/components/Publications/Edit';
+import EditUser from '@/components/Users/Edit';
+import CreateUser from '@/components/Users/Create';
 
 
 
@@ -32,6 +34,12 @@ export default function Home() {
             setModalIsOpen(true);
             setModalTitle(title || "");
             switch (modalChildren) {
+                case 'editUser':
+                    setModalContent(<EditUser userData={data} />);
+                    break;
+                case 'createUser':
+                    setModalContent(<CreateUser/>);
+                    break;
                 case 'createProduct':
                     setModalContent(<CreateProduct />);
                     break;

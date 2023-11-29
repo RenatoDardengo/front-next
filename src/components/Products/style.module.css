@@ -5,10 +5,9 @@
 }
 
 .search_components {
-    /*margin-left: 10px;*/
     display: flex;
     justify-content: space-between;
-    /*margin-right: 10px;*/
+    
 }
 .table{
     display: table;

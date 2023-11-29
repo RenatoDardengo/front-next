@@ -45,7 +45,7 @@ const Users = ({ openModal }: IUserProps) => {
             </div>
             <div className={`${style.search_components} ${style.space_element}`}>
                 <InputText />
-                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createProduct', undefined, "Cadastrar produto")} />
+                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Cadastrar Usuário")} />
 
 
             </div>
@@ -55,9 +55,9 @@ const Users = ({ openModal }: IUserProps) => {
                         <tr>
                             <th>Id</th>
                             <th className={style.th_hide}>Nome</th>
-                            <th className={style.th_hide}>Qtde</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
+                            <th className={style.th_hide}>Permissão</th>
+                            <th>Telefone</th>
+                            <th>Função</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -71,17 +71,17 @@ const Users = ({ openModal }: IUserProps) => {
                                     {user.name}
                                 </td>
                                 <td className={style.th_hide}>
-                                    {user.name}
+                                    {user.level}
                                 </td>
                                 <td >
-                                    {user.name}
+                                    {user.phone_number}
                                 </td>
                                 <td>
-                                    {user.name}
+                                    {user.job_title}
                                 </td>
                                 <td className={`${style.table_img} ${style.last_column}`} >
                                     <a href="#"><img src="/img/view3.png" alt="" /></a>
-                                    <a onClick={() => openModal('editProduct', user, "Editar produto")}><img src="/img/edit.png" /></a>
+                                    <a onClick={() => openModal('editUser', user, "Editar Usuário")}><img src="/img/edit.png" /></a>
                                     <a href="#"><img src="/img/cancel.png" /></a>
                                 </td>
                             </tr>)) : (<tr>

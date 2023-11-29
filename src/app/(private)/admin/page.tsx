@@ -32,25 +32,27 @@ export default function Login() {
                 alert(`Usuário ${name} atenticado com sucesso!`)
                 push("/admin/home");
 
+            } else if (response.status === 401 || response.status === 400) {
+                const data = await response.data;
+                const msg = data.msg;
+                alert(msg);
+            }else{
+                console.log("erro do if")
+                alert ("Erro ao conectar com o servidor. Por favor tente mais tade.")
             }
 
         } catch (error: any) {
-
-            if (axios.isAxiosError(error)) {
-                const axiosError = error as AxiosError<ErrorResponse>;
-                if (axiosError.response?.status === 401) {
-                    const msg = axiosError.response.data.msg;
-                    alert(msg);
-                } else if (axiosError.response?.status === 400) {
-                    const msg = axiosError.response.data.msg;
-                    alert(msg);
-                }
+            console.log ("erro do catch")
+            if (error.response && (error.response.status === 401 || error.response.status === 400)) {
+                const data = error.response.data;
+                const msg = data.msg;
+                alert(msg);
             } else {
-
+                console.error('Erro inesperado:', error);
                 alert("Erro ao tentar fazer login.");
             }
-
         }
+
     };
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);

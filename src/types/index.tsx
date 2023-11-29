@@ -1,3 +1,4 @@
+
 export interface ProductData {
     id?: number;
     name?: string,
@@ -33,13 +34,17 @@ export type NavbarProps = {
     userName?:string;
     
 };
+
 export interface IUserData {
-    id?: number;
-    name?: string,
-    password?: string,
-    permission?: number;
-    createdDate?: Date;
-    updatedDate?: Date
+        id?: number;
+        name?: string;
+        password?: string;
+        level?: number;
+        phone_number?: string;
+        job_title?: string;
+        status?: boolean;
+        created_date?: Date;
+        updated_date?: Date;
 
 }
 export interface IUserProps {
