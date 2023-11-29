@@ -45,7 +45,7 @@ const Users = ({ openModal }: IUserProps) => {
             </div>
             <div className={`${style.search_components} ${style.space_element}`}>
                 <InputText />
-                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Cadastrar Usuário")} />
+                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Novo Usuário")} />
 
 
             </div>

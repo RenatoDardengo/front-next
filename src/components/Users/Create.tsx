@@ -3,12 +3,17 @@ import { Button } from "@/components/Custom/Button";
 import { InputText } from "@/components/Custom/InputText";
 import { Select } from "@/components/Custom/Select";
 import { useState, ChangeEvent } from "react";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const CreateUser=()=>{
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [level, setLevel]=useState<number>(0);
-
+    const [passwordVisible, setPasswordVisible] = useState(false);
+   
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
     const handleLevelChange = (e: ChangeEvent<HTMLSelectElement>)=>{
         var value = parseInt(e.target.value)
         setLevel(value)
@@ -41,7 +46,18 @@ const CreateUser=()=>{
                 </div>
                 <div className={style.user_edit_item}>
                     <label htmlFor="inputPassword">Senha:</label>
-                    <InputText value={password} id="inputPassword" height={30} type="password" onChange={handlePasswordChange} />
+                    <InputText value={password} id="inputPassword" height={30} type={passwordVisible ? 'text' : 'password'}
+                     onChange={handlePasswordChange}
+                      />
+                    <div className={style.toggle_password}>
+                        <button onClick={togglePasswordVisibility} style={{ background: 'transparent' ,border:'none'}} type="button">
+                            {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                      </div>
+                    
+                       
+                 
+                    
                 </div>
 
                 <div className={style.user_edit_item}>
@@ -68,7 +84,7 @@ const CreateUser=()=>{
                         />
                 </div>
 
-                <Button label="Alterar" className="btn_success" />
+                <Button label="Cadastrar" className="btn_success" />
 
             </form>
 

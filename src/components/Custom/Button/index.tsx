@@ -1,16 +1,16 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import style from "./style.module.css"
-import { type } from "os";
 
 interface ButtonProps {
     onClick?: MouseEventHandler<HTMLButtonElement>;
     label?: string;
     className?: string;
     type?: "button" | "submit" | "reset";
+    icon?: ReactNode;
   
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, onClick, className, type }) => {
+export const Button: React.FC<ButtonProps> = ({ label, onClick, className, type, icon}) => {
     var selectClass:string="";
     const defaultClass = style.btn;
     switch(className){
@@ -38,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({ label, onClick, className, type 
     const buttonClass = className ? `${defaultClass} ${selectClass}` : defaultClass;
     return (
         <button className={buttonClass} onClick={onClick} type={type}>
+            {icon}
             {label}
         </button>
     );

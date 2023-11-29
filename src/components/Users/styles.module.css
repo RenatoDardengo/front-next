@@ -144,6 +144,25 @@
 }
 
 
+.toggle_password {
+    position: absolute;
+    top: 35%;
+    left: 320px;
+    /* Ajuste a posição do ícone conforme necessário */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Estilize o ícone padrão e o ícone de olho cortado (senha oculta) */
+.input_password .toggle_password svg {
+    font-size: 18px;
+    color: #888;
+}
+
+.input_password .toggle_password.svg-hidden {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .user_grid {
         justify-content: center;
