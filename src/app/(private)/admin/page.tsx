@@ -2,10 +2,8 @@
 import { InputText } from "@/components/Custom/InputText";
 import { Button } from "@/components/Custom/Button";
 import style from "./page.module.css";
-import axios, { AxiosError } from "axios";
 import { useState } from 'react';
 import Cookie from 'js-cookie';
-import { ErrorResponse } from "@/types";
 import { useRouter } from "next/navigation";
 import UserService from "@/services/apis/userService";
 
@@ -38,7 +36,7 @@ export default function Login() {
                 alert(msg);
             }else{
                 console.log("erro do if")
-                alert ("Erro ao conectar com o servidor. Por favor tente mais tade.")
+                alert ("Erro ao conectar-se com o servidor. Por favor tente mais tarde.")
             }
 
         } catch (error: any) {
