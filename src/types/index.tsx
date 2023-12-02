@@ -40,11 +40,11 @@ export interface IUserData {
         name?: string;
         password?: string;
         level?: number;
-        phone_number?: string;
-        job_title?: string;
+        phoneNumber?: string;
+        jobTitle?: string;
         status?: boolean;
-        created_date?: Date;
-        updated_date?: Date;
+        createdDate?: string;
+        updatedDate?: string;
 
 }
 export interface IUserProps {

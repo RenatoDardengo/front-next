@@ -8,7 +8,6 @@ export default async function AuthenticationMiddleware(req:NextRequest){
     if(token){
         try {
             const response = await UserService.verifyToken(token);
-            console.log(" status",response.status)
             if(response.status===200){
                 
 

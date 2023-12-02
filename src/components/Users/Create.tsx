@@ -5,6 +5,7 @@ import { Select } from "@/components/Custom/Select";
 import { useState, ChangeEvent } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import UserService from "@/services/apis/userService";
+import { format } from 'date-fns';
 
 const CreateUser=()=>{
     const [name, setName] = useState('');
@@ -44,18 +45,27 @@ const CreateUser=()=>{
 
         
     };
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        console.log("entrou handleSubmit")
-
+    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        
         event.preventDefault();
 
         try {
+            const createdDate = format(new Date(), 'yyyy-MM-dd');
+            const updatedDate = format(new Date(), 'yyyy-MM-dd');
+            const response = await UserService.storeUser({
+                name,
+                password,
+                level,
+                phoneNumber: phoneNumber,
+                jobTitle: jobTitle,
+                status:true,
+                createdDate: createdDate,
+                updatedDate:updatedDate
+            });
 
-            const response = await UserService.storeUser({ name, password,level,phone_number:phoneNumber,job_title:jobTitle,
-            created_date: new Date() })
-
-            if (response.status === 200) {
-                alert(`Usuário ${name} cadastrado com sucesso!`);
+            if (response.status === 201) {
+                const data = await response.data;
+                alert(data.msg);
                 
 
             } else if (response.status === 401 || response.status === 400) {
@@ -82,7 +92,7 @@ const CreateUser=()=>{
     };
     return (
         <section className={style.user_edit_sec}>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <div className={style.user_edit_item}>
                     <label htmlFor="inputName">Nome:</label>
                     <InputText value={name} id="inputName" height={30} onChange={handleNameChange} />
@@ -126,9 +136,9 @@ const CreateUser=()=>{
                         onChange={handleLevelChange}
                         />
                 </div>
-                <button type="submit"> cadastrar</button>
+             
 
-                {/*<Button type="submit" label="Cadastrar" className="btn_success"  />*/}
+                <Button onClick= {handleSubmit} label="Cadastrar" className="btn_success"  />
 
             </form>
 

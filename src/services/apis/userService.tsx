@@ -66,10 +66,11 @@ const UserService = {
             return { status: 500, data: null };
         }
     },
-    storeUser: async ({ name, password, level, phone_number, job_title, created_date }:IUserData)=>{
-        console.log("chegou aqui")
+    storeUser: async ({ name, password, level, phoneNumber, jobTitle, status, createdDate, updatedDate }:IUserData)=>{
         const url = `${BASE_URL}/admin/create`;
+        const token = Cookie.get('auth_token');
         const headers = {
+            'Authorization': `Bearer ${token || ''}`,
             'Content-Type': 'application/json'
         };
 
@@ -77,7 +78,7 @@ const UserService = {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: headers,
-                body: JSON.stringify({ name, password, level, phone_number, job_title, created_date })
+                body: JSON.stringify({ name, password, level, phoneNumber, jobTitle,status, createdDate, updatedDate })
             });
 
             const data = await response.json();
