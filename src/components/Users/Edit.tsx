@@ -17,12 +17,12 @@ const EditUser = ({ userData}: EditProps)=>{
 
                 <div className={style.user_edit_item}>
                     <label htmlFor="inputDescription">Telefone:</label>
-                    <InputText value={userData.phone_number} id="inputDescription" />
+                    <InputText value={userData.phoneNumber} id="inputDescription" />
                 </div>
 
                 <div className={style.user_edit_item}>
                     <label htmlFor="inputDescription">Função:</label>
-                    <InputText value={userData.job_title} id="inputDescription" />
+                    <InputText value={userData.jobTitle} id="inputDescription" />
                 </div>
 
                 <Button label="Alterar" className="btn_success" />

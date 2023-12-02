@@ -27,7 +27,11 @@ export default function Home() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
-    function handleOpenModal(modalChildren: string, data?: any, title?: string) {
+    function handleOpenModal(
+        modalChildren: string,
+        data?: any,
+        title?: string,
+        fetchUsers?: () => Promise<void>) {
         if (modalIsOpen) {
             setModalIsOpen(false)
         } else {
@@ -38,7 +42,9 @@ export default function Home() {
                     setModalContent(<EditUser userData={data} />);
                     break;
                 case 'createUser':
-                    setModalContent(<CreateUser/>);
+                    if (fetchUsers) { 
+                        setModalContent(<CreateUser closeModal={() => setModalIsOpen(false)} fetchUsers={fetchUsers} />);
+                    }
                     break;
                 case 'createProduct':
                     setModalContent(<CreateProduct />);

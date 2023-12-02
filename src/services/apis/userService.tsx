@@ -86,7 +86,31 @@ const UserService = {
         } catch (error) {
             return { status: 500, data: null };
         }
-    }
+    },
+
+    getUsersByFilter: async (searchTerm:string) => {
+        console.log (searchTerm)
+        const url = `${BASE_URL}/admin/users/search?searchTerm=${searchTerm}`;
+        const token = Cookie.get('auth_token');
+        const headers = {
+            'Authorization': `Bearer ${token || ''}`,
+            'Content-Type': 'application/json'
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: headers
+            });
+
+            const data = await response.json();
+            return { status: response.status, data };
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            return { status: 500, data: null };
+        }
+    },
+
 }
 
 export default UserService;

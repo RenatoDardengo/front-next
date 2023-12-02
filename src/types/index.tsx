@@ -48,7 +48,7 @@ export interface IUserData {
 
 }
 export interface IUserProps {
-    openModal: (param: string, data?: ProductData, title?: string) => void;
+    openModal: (param: string, data?: ProductData, title?: string, fetchUsers?: () => Promise<void>) => void;
 
 
 }

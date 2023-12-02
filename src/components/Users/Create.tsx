@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import UserService from "@/services/apis/userService";
 import { format } from 'date-fns';
 
-const CreateUser=()=>{
+const CreateUser = ({ closeModal, fetchUsers }: { closeModal: () => void; fetchUsers: () => Promise<void> }) => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -66,6 +66,8 @@ const CreateUser=()=>{
             if (response.status === 201) {
                 const data = await response.data;
                 alert(data.msg);
+                closeModal();
+                fetchUsers();
                 
 
             } else if (response.status === 401 || response.status === 400) {

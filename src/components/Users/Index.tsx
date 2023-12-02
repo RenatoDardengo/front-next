@@ -3,37 +3,54 @@ import { InputText } from "@/components/Custom/InputText";
 import { Button } from "@/components/Custom/Button";
 import { IUserData, IUserProps, ErrorResponse } from "@/types";
 import UserService from "@/services/apis/userService";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import axios, { AxiosError } from "axios";
 
 const Users = ({ openModal }: IUserProps) => {
     const [users, setUsers] = useState<IUserData[]>([])
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await UserService.getAllUser();
-                setUsers(response.data.users)
+    const [search, setSearch] = useState('');
 
-                
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError<ErrorResponse>;
-                    if (axiosError.response?.status === 401) {
-                        const msg = axiosError.response.data.msg;
-                        alert(msg);
-                    } else if (axiosError.response?.status === 400) {
-                        const msg = axiosError.response.data.msg;
-                        alert(msg);
-                    }
-                } else {
-                    alert("Erro ao realizar a consulta.");
+    const fetchUsers = async () => {
+        try {
+            const response = await UserService.getAllUser();
+            setUsers(response.data.users);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                const axiosError = error as AxiosError<ErrorResponse>;
+                if (axiosError.response?.status === 401) {
+                    const msg = axiosError.response.data.msg;
+                    alert(msg);
+                } else if (axiosError.response?.status === 400) {
+                    const msg = axiosError.response.data.msg;
+                    alert(msg);
                 }
+            } else {
+                alert("Erro ao realizar a consulta.");
             }
         }
+    };
 
-        fetchData();
+
+    useEffect(() => {
+        fetchUsers();
     }, []);
     
+    const searchUsers = async () => {
+        try {
+            const response = await UserService.getUsersByFilter(search);
+            setUsers(response.data.users);
+        } catch (error) {
+            // Tratamento de erros
+        }
+    };
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+        searchUsers();
+        console.log (users)
+    };
+    
+
 
       
 
@@ -44,8 +61,8 @@ const Users = ({ openModal }: IUserProps) => {
 
             </div>
             <div className={`${style.search_components} ${style.space_element}`}>
-                <InputText />
-                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Novo Usuário")} />
+                <InputText onChange={handleInputChange} />
+                <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Novo Usuário", fetchUsers)} />
 
 
             </div>
@@ -54,10 +71,10 @@ const Users = ({ openModal }: IUserProps) => {
                     <thead className={style.thead}>
                         <tr>
                             <th>Id</th>
-                            <th className={style.th_hide}>Nome</th>
+                            <th>Nome</th>
                             <th className={style.th_hide}>Permissão</th>
                             <th>Telefone</th>
-                            <th>Função</th>
+                            <th className={style.th_hide}>Função</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -67,17 +84,17 @@ const Users = ({ openModal }: IUserProps) => {
                                 <td>
                                     {user.id}
                                 </td>
-                                <td className={style.th_hide}>
+                                <td>
                                     {user.name}
                                 </td>
                                 <td className={style.th_hide}>
                                     {user.level}
                                 </td>
                                 <td >
-                                    {user.phone_number}
+                                    {user.phoneNumber}
                                 </td>
-                                <td>
-                                    {user.job_title}
+                                <td className={style.th_hide}>
+                                    {user.jobTitle}
                                 </td>
                                 <td className={`${style.table_img} ${style.last_column}`} >
                                     <a href="#"><img src="/img/view3.png" alt="" /></a>
