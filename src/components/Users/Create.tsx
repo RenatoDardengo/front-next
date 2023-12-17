@@ -114,7 +114,8 @@ const CreateUser = ({ closeModal, fetchUsers }: { closeModal: () => void; fetchU
 
                 <div className={style.user_edit_item}>
                     <label htmlFor="inputPhone">Telefone:</label>
-                    <InputText value={phoneNumber} id="inputPhone" height={30} mask="(99) 99999-9999" onChange={handlePhoneNumberChange} />
+                    <InputText value={phoneNumber} id="inputPhone" height={30} mask="(99) 99999-9999"
+                     onChange={handlePhoneNumberChange} />
                 </div>
 
                 <div className={style.user_edit_item}>

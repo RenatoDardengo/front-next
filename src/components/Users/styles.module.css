@@ -148,12 +148,11 @@
     position: absolute;
     top: 35%;
     left: 320px;
-    /* Ajuste a posição do ícone conforme necessário */
     transform: translateY(-50%);
     cursor: pointer;
 }
 
-/* Estilize o ícone padrão e o ícone de olho cortado (senha oculta) */
+
 .input_password .toggle_password svg {
     font-size: 18px;
     color: #888;
@@ -186,9 +185,9 @@
 
     .space_element {
         flex-direction: column;
-        align-items: flex-start;
+        align-items:center;
         margin-top: 5px;
-        /* Alinha os elementos à esquerda */
+        
     }
         .space_element>* {
             margin-bottom: 10px;

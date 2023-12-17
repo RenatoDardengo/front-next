@@ -39,7 +39,10 @@ export default function Home() {
             setModalTitle(title || "");
             switch (modalChildren) {
                 case 'editUser':
-                    setModalContent(<EditUser userData={data} />);
+                    if(fetchUsers){
+
+                        setModalContent(<EditUser userData={data} closeModal={() => setModalIsOpen(false)} fetchUsers={fetchUsers} />);
+                    }
                     break;
                 case 'createUser':
                     if (fetchUsers) { 

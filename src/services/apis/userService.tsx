@@ -87,9 +87,30 @@ const UserService = {
             return { status: 500, data: null };
         }
     },
+    updateUser: async({id, name, level, phoneNumber, jobTitle, status, updatedDate }: IUserData)=>{
+        const url = `${BASE_URL}/admin/update/${id}`;
+        const token = Cookie.get('auth_token');
+        const headers = {
+            'Authorization': `Bearer ${token || ''}`,
+            'Content-Type': 'application/json'
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: headers,
+                body: JSON.stringify({ name, level, phoneNumber, jobTitle, status, updatedDate })
+            });
+
+            const data = await response.json();
+            return { data, status: response.status };
+        } catch (error) {
+            return { status: 500, data: null };
+        }
+
+    },
 
     getUsersByFilter: async (searchTerm:string) => {
-        console.log (searchTerm)
         const url = `${BASE_URL}/admin/users/search?searchTerm=${searchTerm}`;
         const token = Cookie.get('auth_token');
         const headers = {

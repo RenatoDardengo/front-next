@@ -7,8 +7,9 @@ import { useEffect, useState, ChangeEvent } from "react";
 import axios, { AxiosError } from "axios";
 
 const Users = ({ openModal }: IUserProps) => {
-    const [users, setUsers] = useState<IUserData[]>([])
-    const [search, setSearch] = useState('');
+    const [users, setUsers] = useState<IUserData[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(0);
 
     const fetchUsers = async () => {
         try {
@@ -35,19 +36,18 @@ const Users = ({ openModal }: IUserProps) => {
         fetchUsers();
     }, []);
     
-    const searchUsers = async () => {
+    const searchUsers = async (value:string) => {
         try {
-            const response = await UserService.getUsersByFilter(search);
+            const response = await UserService.getUsersByFilter(value);
             setUsers(response.data.users);
         } catch (error) {
-            // Tratamento de erros
+           
         }
     };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
-        searchUsers();
-        console.log (users)
+        searchUsers(e.target.value);
+      
     };
     
 
@@ -61,7 +61,7 @@ const Users = ({ openModal }: IUserProps) => {
 
             </div>
             <div className={`${style.search_components} ${style.space_element}`}>
-                <InputText onChange={handleInputChange} />
+                <InputText onChange={handleInputChange} height={30} />
                 <Button label="Cadastrar" className="btn_success" onClick={() => openModal('createUser', undefined, "Novo Usuário", fetchUsers)} />
 
 
@@ -98,7 +98,7 @@ const Users = ({ openModal }: IUserProps) => {
                                 </td>
                                 <td className={`${style.table_img} ${style.last_column}`} >
                                     <a href="#"><img src="/img/view3.png" alt="" /></a>
-                                    <a onClick={() => openModal('editUser', user, "Editar Usuário")}><img src="/img/edit.png" /></a>
+                                    <a onClick={() => openModal('editUser', user, "Editar Usuário", fetchUsers)}><img src="/img/edit.png" /></a>
                                     <a href="#"><img src="/img/cancel.png" /></a>
                                 </td>
                             </tr>)) : (<tr>
