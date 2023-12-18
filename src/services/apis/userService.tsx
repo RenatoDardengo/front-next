@@ -109,6 +109,28 @@ const UserService = {
         }
 
     },
+    deleteUser: async(id:number)=>{
+        const url = `${BASE_URL}/admin/${id}`;
+        const token = Cookie.get('auth_token');
+        const headers = {
+            'Authorization': `Bearer ${token || ''}`,
+            'Content-Type': 'application/json'
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE',
+                headers: headers,
+                
+            });
+
+            const data = await response.json();
+            return { data, status: response.status };
+        } catch (error) {
+            return { status: 500, data: null };
+        }
+
+    },
 
     getUsersByFilter: async (searchTerm:string) => {
         const url = `${BASE_URL}/admin/users/search?searchTerm=${searchTerm}`;

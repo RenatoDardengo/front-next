@@ -14,7 +14,17 @@ const Users = ({ openModal }: IUserProps) => {
     const fetchUsers = async () => {
         try {
             const response = await UserService.getAllUser();
-            setUsers(response.data.users);
+            if (response.status === 200) {
+                setUsers(response.data.users);
+            } else if (response.status === 404 || response.status === 500 || response.status === 400 || response.status === 401) {
+                const data = await response.data;
+                const msg = data.msg;
+                alert(msg);
+            } else {
+                alert("Erro ao conectar-se com o servidor. Por favor tente mais tarde.")
+            }
+
+           
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const axiosError = error as AxiosError<ErrorResponse>;
@@ -97,9 +107,8 @@ const Users = ({ openModal }: IUserProps) => {
                                     {user.jobTitle}
                                 </td>
                                 <td className={`${style.table_img} ${style.last_column}`} >
-                                    <a href="#"><img src="/img/view3.png" alt="" /></a>
                                     <a onClick={() => openModal('editUser', user, "Editar Usuário", fetchUsers)}><img src="/img/edit.png" /></a>
-                                    <a href="#"><img src="/img/cancel.png" /></a>
+                                    <a onClick={() => openModal('deleteUser', user, "Excluir Usuário", fetchUsers)}><img src="/img/cancel.png" /></a>
                                 </td>
                             </tr>)) : (<tr>
                                 <td colSpan={6}>Nenhum usuário encontrado!</td>

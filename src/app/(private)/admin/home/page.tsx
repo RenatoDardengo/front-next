@@ -15,6 +15,7 @@ import CreatePubliocation from '@/components/Publications/Create';
 import EditPublication from '@/components/Publications/Edit';
 import EditUser from '@/components/Users/Edit';
 import CreateUser from '@/components/Users/Create';
+import DeleteUser from '@/components/Users/Delete';
 
 
 
@@ -47,6 +48,12 @@ export default function Home() {
                 case 'createUser':
                     if (fetchUsers) { 
                         setModalContent(<CreateUser closeModal={() => setModalIsOpen(false)} fetchUsers={fetchUsers} />);
+                    }
+                    break;
+                case 'deleteUser':
+                    if (fetchUsers) {
+
+                        setModalContent(<DeleteUser userData={data} closeModal={() => setModalIsOpen(false)} fetchUsers={fetchUsers} />);
                     }
                     break;
                 case 'createProduct':

@@ -64,7 +64,16 @@
     display: inline-block;
     align-items: center;
 }
-
+.user_msg_delete{
+    align-items: center;
+    color: red;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+.user_btn_delete {
+    padding-left: 20px;
+    padding-top: 30px;
+}
 .user_edit_sec {
     margin: 10px;
     align-items: center;
