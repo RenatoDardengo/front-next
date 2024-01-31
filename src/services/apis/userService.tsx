@@ -56,6 +56,7 @@ const UserService = {
         try {
             const response = await fetch(url, {
                 method: 'GET',
+                mode:'cors',
                 headers: headers
             });
 
@@ -77,6 +78,7 @@ const UserService = {
         try {
             const response = await fetch(url, {
                 method: 'POST',
+                mode: 'cors',
                 headers: headers,
                 body: JSON.stringify({ name, password, level, phoneNumber, jobTitle,status, createdDate, updatedDate })
             });
@@ -98,6 +100,7 @@ const UserService = {
         try {
             const response = await fetch(url, {
                 method: 'PUT',
+                mode:'cors',
                 headers: headers,
                 body: JSON.stringify({ name, level, phoneNumber, jobTitle, status, updatedDate })
             });
@@ -120,6 +123,7 @@ const UserService = {
         try {
             const response = await fetch(url, {
                 method: 'DELETE',
+                mode: 'cors',
                 headers: headers,
                 
             });
@@ -143,6 +147,7 @@ const UserService = {
         try {
             const response = await fetch(url, {
                 method: 'GET',
+                mode: 'cors',
                 headers: headers
             });
 
