@@ -5,7 +5,17 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+ background-color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  transition: all 0.4s ease-in-out;
 }
+.s{
+
+  --color-primary: #191d2b;
+}
+
 .footer_class {
   padding: 10px;
   background-color: #000000;
@@ -208,6 +218,7 @@
     position: fixed;
     width: 100%;
   }
+
 
   .description p {
     align-items: center;

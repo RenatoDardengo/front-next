@@ -7,7 +7,7 @@ interface MainProps {
   children: ReactNode;
 
 }
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({children,}: MainProps) {
   return (
@@ -16,9 +16,9 @@ export default function RootLayout({children,}: MainProps) {
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <title>Homepage do site e-commerce</title>
-            <link rel="stylesheet" href="style.css"/>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap" rel="stylesheet"/>
         </head>
-        <body className={inter.className}>
+        <body className={style.main}>
         <header className={style.header_main}>
           <nav className={style.nav_main}>
             <Link href={"/"}>Home</Link>

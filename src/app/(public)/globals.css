@@ -38,10 +38,24 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+  --color-primary: #191d2b;
+  --color-secundary: #27AE60;
+  --color-white: #FFFFFF;
+  --color-black: #000;
+  --color-gray0: #f8f8f8;
+  --color-gray-1: #dbe1e8;
+  --color-gray-2: #b2becd;
+  --color-gray-3: #6c7983;
+  --color-gray-4: #454e56;
+  --color-gray-5: #2a2e35;
+  --color-gray-6: #12181b;
+  --br-sm-2: 14px;
+  --box-shadow-1: 0 3px 15px rgba(0, 0, 0, .3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
