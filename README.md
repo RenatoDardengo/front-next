@@ -17,11 +17,14 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-### Tela Login
+### Tela Admin Login
 ![Tela 1](public/Image/login.png)
 
-### Tela Cadastro Usuario
+### Tela Admin Cadastro Usuario
 ![Tela 2](<public/Image/cadastro usuario.png>)
 
-### Tela Cadastrar Usuários
+### Tela Admin Cadastrar Usuários
 ![Tela 3](<public/Image/cadastrar usuario.png>)
+
+### Tela Admin Cadastro Publicações
+![Tela 4](<public/Image/cadastro publicacoes.png>)
